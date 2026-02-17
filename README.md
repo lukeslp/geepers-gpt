@@ -1,20 +1,20 @@
 # geepers-gpt
 
-Portable skill pack for GPT-focused CLI workflows.
+A portable skill pack for GPT-focused CLI workflows.
 
-## What This Repo Contains
+## What You Get
 
-- Core routing helpers: `skills/geepers`, `skills/team`, `skills/swarm`, `skills/quality`, `skills/dream`
-- Practical aliases: `skills/publish`, `skills/doublecheck`, `skills/poet`, `skills/readme`, `skills/humanize`
-- Workflow aliases: `skills/scout`, `skills/planner`, `skills/builder`, `skills/testing`, `skills/validator`
-- Source variants: `skills/dataset-publish`, `skills/geepers-doublecheck`, `skills/geepers-poet`, `skills/geepers-readme`
+- Routing helpers: `geepers`, `team`, `swarm`, `quality`, `dream`
+- High-utility aliases: `publish`, `doublecheck`, `poet`, `readme`, `humanize`
+- Execution flow aliases: `scout`, `planner`, `builder`, `testing`, `validator`
+- Source variants kept for compatibility: `dataset-publish`, `geepers-doublecheck`, `geepers-poet`, `geepers-readme`
 
-## Local Source of Truth
+## Repository Layout
 
-These were synced from:
-- `~/.codex/skills`
+- `skills/<skill-name>/SKILL.md`: skill instructions and routing logic
+- `skills/<skill-name>/scripts/`: optional helper scripts used by that skill
 
-## Install Into Codex
+## Install
 
 Copy one or more skills into your Codex skills directory:
 
@@ -22,9 +22,37 @@ Copy one or more skills into your Codex skills directory:
 cp -a skills/<skill-name> ~/.codex/skills/<skill-name>
 ```
 
-Then restart Codex.
+Restart Codex after copying.
 
-## Notes
+## Quick Start
 
-- This repo is intended for sharing and versioning custom skills.
-- Keep secrets/tokens out of skill files.
+Add the core router set first:
+
+```bash
+for s in geepers team swarm quality dream; do
+  cp -a "skills/$s" "$HOME/.codex/skills/$s"
+done
+```
+
+Then add your preferred workflow aliases:
+
+```bash
+for s in planner builder testing validator readme humanize; do
+  cp -a "skills/$s" "$HOME/.codex/skills/$s"
+done
+```
+
+## Typical Usage
+
+- `/team`: broad toolbox routing for mixed tasks
+- `/swarm`: parallel, broad-spectrum execution
+- `/quality`: second-opinion quality audit
+- `/dream`: dual-model critique flow (Claude CLI + Gemini CLI in read-only mode)
+
+## Maintenance
+
+When skills change locally in `~/.codex/skills`, sync back into this repo and commit.
+
+## Security
+
+Do not commit secrets, local tokens, or machine-specific config.
