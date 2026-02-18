@@ -4,10 +4,20 @@ A portable skill pack for GPT-focused CLI workflows.
 
 ## What You Get
 
-- Routing helpers: `geepers`, `team`, `swarm`, `quality`, `dream`
-- High-utility aliases: `publish`, `doublecheck`, `poet`, `readme`, `humanize`
-- Execution flow aliases: `scout`, `planner`, `builder`, `testing`, `validator`
-- Source variants kept for compatibility: `dataset-publish`, `geepers-doublecheck`, `geepers-poet`, `geepers-readme`
+**Workflow Specialists** — engineering lifecycle skills:
+- `scout`, `planner`, `builder`, `testing`, `validator` — project recon → plan → build → test → validate
+- `team`, `swarm`, `quality`, `dream` — routing, parallel research, quality audit, dual-model critique
+- `humanize`, `publish`, `poet`, `readme`, `doublecheck` — content and publication utilities
+
+**Domain Tools** — specialized knowledge packs:
+- `datavis` — D3.js/Chart.js visualization design with color theory and perceptual accuracy
+- `data-fetch` — structured retrieval from 15+ authoritative APIs (arXiv, Census, GitHub, NASA, etc.)
+- `dream-swarm` — parallel multi-domain research orchestration
+- `engineering` — full-stack architecture and code implementation
+- `executive`, `finance`, `product` — strategic planning orchestrators
+- `server-deploy` — service deployment and Caddy routing
+- `mcp-orchestration` — multi-agent Dream Cascade/Swarm coordination
+- `git-hygiene-guardian` — repo cleanup and artifact removal
 
 ## Repository Layout
 
