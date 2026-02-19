@@ -1,68 +1,44 @@
 # geepers-gpt
 
-A portable skill pack for GPT-focused CLI workflows.
+Generated Codex/GPT skill mirror for the geepers ecosystem.
 
-## What You Get
+## Source of Truth
 
-**Workflow Specialists** — engineering lifecycle skills:
-- `scout`, `planner`, `builder`, `testing`, `validator` — project recon → plan → build → test → validate
-- `team`, `swarm`, `quality`, `dream` — routing, parallel research, quality audit, dual-model critique
-- `humanize`, `publish`, `poet`, `readme`, `doublecheck` — content and publication utilities
+This repository is synced from canonical skills in:
+- `https://github.com/lukeslp/geepers`
+- Canonical path: `skills/source/`
 
-**Domain Tools** — specialized knowledge packs:
-- `datavis` — D3.js/Chart.js visualization design with color theory and perceptual accuracy
-- `data-fetch` — structured retrieval from 15+ authoritative APIs (arXiv, Census, GitHub, NASA, etc.)
-- `dream-swarm` — parallel multi-domain research orchestration
-- `engineering` — full-stack architecture and code implementation
-- `executive`, `finance`, `product` — strategic planning orchestrators
-- `server-deploy` — service deployment and Caddy routing
-- `mcp-orchestration` — multi-agent Dream Cascade/Swarm coordination
-- `git-hygiene-guardian` — repo cleanup and artifact removal
+Direct edits to `skills/` in this repo are blocked by CI. Make changes in canonical source, then sync.
 
-## Repository Layout
+## What Is Here
 
-- `skills/<skill-name>/SKILL.md`: skill instructions and routing logic
-- `skills/<skill-name>/scripts/`: optional helper scripts used by that skill
+- `skills/`: generated skill folders for Codex/GPT workflows
+- `codex-package.json`: generated package metadata
+- `aliases.generated.json`: migration alias map (including Dreamer -> Geepers naming)
+- `.github/workflows/mirror-readonly-guard.yml`: mirror protection
 
 ## Install
 
-Copy one or more skills into your Codex skills directory:
-
 ```bash
-cp -a skills/<skill-name> ~/.codex/skills/<skill-name>
-```
-
-Restart Codex after copying.
-
-## Quick Start
-
-Add the core router set first:
-
-```bash
-for s in geepers team swarm quality dream; do
-  cp -a "skills/$s" "$HOME/.codex/skills/$s"
+for s in skills/*; do
+  name=$(basename "$s")
+  cp -a "$s" "$HOME/.codex/skills/$name"
 done
 ```
 
-Then add your preferred workflow aliases:
+Restart your CLI after copying skills.
+
+## Sync Workflow
+
+From canonical repo (`/home/coolhand/geepers`):
 
 ```bash
-for s in planner builder testing validator readme humanize; do
-  cp -a "skills/$s" "$HOME/.codex/skills/$s"
-done
+python3 scripts/validate-skills.py --strict
+python3 scripts/build-platform-packages.py --platform codex --clean
+bash scripts/sync-mirrors.sh --platform codex --delete --skip-build
+bash scripts/report-drift.sh --platform codex --skip-missing
 ```
 
-## Typical Usage
+## License
 
-- `/team`: broad toolbox routing for mixed tasks
-- `/swarm`: parallel, broad-spectrum execution
-- `/quality`: second-opinion quality audit
-- `/dream`: dual-model critique flow (Claude CLI + Gemini CLI in read-only mode)
-
-## Maintenance
-
-When skills change locally in `~/.codex/skills`, sync back into this repo and commit.
-
-## Security
-
-Do not commit secrets, local tokens, or machine-specific config.
+MIT
