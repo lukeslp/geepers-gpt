@@ -1,43 +1,59 @@
-# geepers-gpt
+# geepers-skills (Codex)
 
-Generated Codex/GPT skill mirror for the geepers ecosystem.
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Platform: Codex](https://img.shields.io/badge/platform-Codex%20CLI-orange.svg)
+![Skills: 23](https://img.shields.io/badge/skills-23-brightgreen.svg)
 
-## Source of Truth
-
-This repository is synced from canonical skills in:
-- `https://github.com/lukeslp/geepers`
-- Canonical path: `skills/source/`
-
-Direct edits to `skills/` in this repo are blocked by CI. Make changes in canonical source, then sync.
-
-## What Is Here
-
-- `skills/`: generated skill folders for Codex/GPT workflows
-- `codex-package.json`: generated package metadata
-- `aliases.generated.json`: migration alias map (including Dreamer -> Geepers naming)
-- `.github/workflows/mirror-readonly-guard.yml`: mirror protection
+Skill package for the Codex CLI. Same 23-skill set as the canonical geepers release, synced and adapted for the Codex runtime.
 
 ## Install
 
+Drop the `skills/` directory from this package into your Codex skills path, or reference `codex-package.json` from your Codex config.
+
+## What's Included
+
+**Orchestration**
+- `team` — routes any request to the right specialist
+- `executive`, `engineering`, `finance` — domain-specific orchestration
+- `dream-swarm`, `swarm`, `mcp-orchestration` — parallel multi-agent workflows
+
+**Planning & Building**
+- `planner` — breaks down tasks and sequences work
+- `builder` — executes implementation plans
+- `scout` — fast project reconnaissance and quick wins
+- `quality` — parallel a11y, perf, security, and dep checks
+- `testing` — test strategy and implementation
+
+**Dev Tools**
+- `git-hygiene-guardian` — repo cleanup and artifact hygiene
+- `validator` — config and integration validation
+- `server-deploy` — service deployment and routing
+
+**Research & Data**
+- `data-fetch` — pulls from 17+ structured APIs (Census, arXiv, GitHub, NASA, etc.)
+- `datavis` — D3.js and Chart.js visualization workflows
+- `geepers-data` — aggregated data API access
+- `geepers-corpus` — COCA corpus linguistics
+- `geepers-etymology` — historical linguistics and etymology
+
+**LLM & APIs**
+- `geepers-llm` — unified access across multiple model providers
+- `geepers-orchestrate` — API-backed Dream Cascade and Dream Swarm execution
+
+**Product**
+- `product` — PRD generation and product planning
+
+## Rebuild from Canonical
+
 ```bash
-for s in skills/*; do
-  name=$(basename "$s")
-  cp -a "$s" "$HOME/.codex/skills/$name"
-done
-```
-
-Restart your CLI after copying skills.
-
-## Sync Workflow
-
-From canonical repo (`/home/coolhand/geepers`):
-
-```bash
-python3 scripts/validate-skills.py --strict
 python3 scripts/build-platform-packages.py --platform codex --clean
-bash scripts/sync-mirrors.sh --platform codex --delete --skip-build
-bash scripts/report-drift.sh --platform codex --skip-missing
 ```
+
+## Author
+
+**Luke Steuber**
+- [lukesteuber.com](https://lukesteuber.com)
+- [@lukesteuber.com](https://bsky.app/profile/lukesteuber.com) on Bluesky
 
 ## License
 
