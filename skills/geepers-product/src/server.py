@@ -59,7 +59,7 @@ class ProductClient:
         
         if api_key and "xai" in str(api_key): # Heuristic
              base_url = "https://api.x.ai/v1"
-             self.model = "grok-2-1212"
+             self.model = "grok-3"
 
         if not api_key:
             raise ValueError("Missing API Key (OPENAI_API_KEY or XAI_API_KEY)")
